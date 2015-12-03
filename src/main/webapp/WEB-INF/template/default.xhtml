@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+
+<h:head>
+	<title><ui:insert name="title">JUG Hyderabad Member Site</ui:insert></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<h:outputStylesheet name="bootstrap.min.css" library="css" />
+	<h:outputStylesheet name="bootstrap-theme.min.css" library="css" />
+	<h:outputStylesheet name="trakstok.css" library="css" />
+	<h:outputScript name="bootstrap.min.js" library="javascript" />
+
+</h:head>
+<h:body>
+
+
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">JUG Hyderabad</a>
+			</div>
+			<div class="navbar-collapse collapse" align="right">
+				<h:form class="navbar-form navbar-right" role="form">
+					<c:choose>
+						<c:when test="${userInfo.loggedIn == true}">
+						<h:outputLabel styleClass="userInfo"
+								value="#{userInfo.displayName}" />
+							
+						</c:when>
+						<c:otherwise>
+							<script>
+function startDance() {
+    window.open("<h:outputText value="#{meetupClient.startDanceUrl}"  escape="false" />", 'Meetup Grant','toolbar=0,location=0,directories=0,status=0,menubar=0,scrollbars=0,resizable=0,width=400,height=400,modal=yes');
+}
+                        </script>
+							<h:outputLabel styleClass="userInfo"
+								value="#{userInfo.displayName}" />
+							<button type="submit" class="btn btn-success"
+								onclick="startDance();">Log-in</button>
+						</c:otherwise>
+					</c:choose>
+
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container">
+
+		<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		</nav>
+
+		<br /> <br /> <br />
+
+		<ui:insert name="content">Default content</ui:insert>
+
+	</div>
+
+	<br />
+	<br />
+	<hr />
+	<div id="footer">
+		<div class="container">
+			<p class="muted credit">(C) JUG Hyderabad </p>
+		</div>
+	</div>
+
+</h:body>
+
+</html>
