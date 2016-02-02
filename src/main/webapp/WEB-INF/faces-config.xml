@@ -24,6 +24,12 @@
             <from-outcome>admin/admin</from-outcome>           
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
+        <navigation-case>
+            <from-action>#{LoginBean.login}</from-action>
+            <from-outcome>authFailed</from-outcome>           
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>authenticateUser_create</from-outcome>

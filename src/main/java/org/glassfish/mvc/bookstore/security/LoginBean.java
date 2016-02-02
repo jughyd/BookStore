@@ -53,6 +53,9 @@ public class LoginBean {
        catch(ServletException e){
            context.addMessage(null, new FacesMessage("login failed"));
        }
-     return "admin/admin";
+       if(true)
+        return "admin/admin";
+       else
+        return "authFailed";   
    }
 }
