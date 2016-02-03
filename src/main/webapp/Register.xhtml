@@ -1,0 +1,50 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:define name="content">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">MVC Bookstore</a>
+                </div>
+            </div>
+        </nav>
+        <!-- Registeration Page Content -->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+        <div class="container">
+            <h2>New User Registration</h2>
+            <hr />
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel>Login Name</h:outputLabel>
+                    <h:inputText id="loginName"/>
+                    <h:outputLabel>Password</h:outputLabel>
+                    <h:inputSecret id="passwordInput"></h:inputSecret>
+                    <h:outputLabel>Repeat Password</h:outputLabel>
+                    <h:inputSecret id="passwordInputRepeat"/>
+                    <h:outputLabel>First Name</h:outputLabel>
+                    <h:inputText id="firstName"/>
+                    <h:outputLabel>Middle Name</h:outputLabel>
+                    <h:inputText id="middleName"/>
+                    <h:outputLabel>Last Name</h:outputLabel>
+                    <h:inputText id="lastName"/>
+                    <h:outputLabel>Email</h:outputLabel>
+                    <h:inputText id="email"/>
+                    <h:outputLabel>Country</h:outputLabel>
+                    <h:selectOneListbox id="country"/> 
+                    
+                    <h:commandButton value="Register"  />
+                    <h:commandButton value="Reset" type="reset" />
+                </h:panelGrid>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
