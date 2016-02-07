@@ -62,7 +62,7 @@
             <artifactId>javaee-api</artifactId>
             <scope>provided</scope>
         </dependency>
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>org.glassfish.ozark</groupId>
             <artifactId>ozark</artifactId>
         </dependency>-->
@@ -77,7 +77,12 @@
             <artifactId>javax.mvc-api</artifactId>
             <type>jar</type>
         </dependency>
-        
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.190</version>
+        </dependency>
+
     </dependencies>
     
     <licenses>
