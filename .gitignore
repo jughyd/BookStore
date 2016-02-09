@@ -40,3 +40,4 @@ nbactions.xml
 dist/
 build/
 tests/target/
+/nbproject/
