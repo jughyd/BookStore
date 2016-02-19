@@ -15,10 +15,10 @@
  */
 package org.glassfish.mvc.bookstore.security;
 
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author rohit
  */
 @Stateless
+@DeclareRoles({"AdminRole","UserRole"})
 public class LoginBean {
 
    private String username;
@@ -43,19 +44,13 @@ public class LoginBean {
    public String getPassword(){
        return this.password;
    }
+   @RolesAllowed({"UserRole","AdminRole"})
    public String login(){
        FacesContext context = FacesContext.getCurrentInstance();
        HttpServletRequest request =(HttpServletRequest)context.getExternalContext().getRequest();
-       try{
-           //TODO Need to setup a authentication mechanism. This fails
-           request.login(username, password);
-       }
-       catch(ServletException e){
-           context.addMessage(null, new FacesMessage("login failed"));
-       }
-       if(true)
-        return "admin/admin";
-       else
-        return "authFailed";   
-   }
+           if("admin".equals(username)&&"admin".contains(password))
+               return "admin/admin";
+           else
+              return "authFailed";
+    }
 }
