@@ -6,4 +6,38 @@ pom.xml.next
 release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
-.mvn/timing.properties
+faces-config.NavData
+
+bin/
+impl/coverage.ec
+*.DS_Store
+
+# Java Clas Files #
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# IDE Files #
+.classpath
+.project
+.settings
+*.iml
+*.ipr
+*.iws
+*.swp
+.idea
+nb-configuration.xml
+nbactions.xml
+
+# OS Specific folders/Files#
+.DS_Store
+
+# Build tool specific files/Folders #
+.gradle/
+dist/
+build/
+tests/target/
+/nbproject/
