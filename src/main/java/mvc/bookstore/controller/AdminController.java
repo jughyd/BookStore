@@ -15,10 +15,12 @@
  */
 package mvc.bookstore.controller;
 
+import javax.inject.Inject;
 import javax.mvc.annotation.Controller;
 import javax.mvc.annotation.View;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import mvc.bookstore.facade.AuthorFacade;
 
 /**
  *
@@ -27,11 +29,15 @@ import javax.ws.rs.Path;
 @Controller
 @Path("admin")
 public class AdminController {
+    
+    @Inject
+    AuthorFacade aFacade;
 
     @GET
     @View("admin/index.xhtml")
     public void admin() {
-        System.out.println("home/admin is called");
+        
+        System.out.println("home/admin is called - " + aFacade.count());
      //   return "admin/index.xhtml";
     }
 }
