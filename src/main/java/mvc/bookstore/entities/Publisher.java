@@ -20,12 +20,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author rhegde
  */
 @Entity
+@Table(name = "PUBLISHER")
 public class Publisher implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,6 +36,20 @@ public class Publisher implements Serializable {
     private Long id;
     
     private String name;
+
+    public Publisher() {
+    }
+
+    public Publisher(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    
+    
+    
+    
+    
+    
 
     public String getName() {
         return name;

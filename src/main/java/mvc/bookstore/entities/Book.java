@@ -16,16 +16,19 @@
 package mvc.bookstore.entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Rajmahendra Hegde
  */
 @Entity
+@Table(name = "BOOKS")
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,7 +36,21 @@ public class Book implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    @Column(name = "BOOK_NAME")
     private String bookName;
+
+    public Book() {
+    }
+
+    public Book(Long id, String bookName) {
+        this.id = id;
+        this.bookName = bookName;
+    }
+    
+    
+    
+    
+    
 
     public String getBookName() {
         return bookName;
