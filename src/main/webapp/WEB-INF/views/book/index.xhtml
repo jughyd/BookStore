@@ -5,40 +5,37 @@
                 xmlns:c="http://java.sun.com/jsp/jstl/core">
     <ui:define name="content">
 
-     
-            <!-- Jumbotron Header -->
-            <header class="jumbotron hero-spacer">
-                <h1>Books</h1>
-                <p>Below are the books we have for you to review, know more and buy.</p>
-              
-            </header>
-            
-              <div class="row">
-                  
-                  
-                  <c:forEach var="item" items="#{books}">
-                    <div class="col-sm-4 col-lg-4 col-md-4">
-                        <div class="thumbnail">
-                            <div class="caption">
-                             
-                            <div class="caption">
-                                <h4 class="pull-right">&#8377; #{item.price}</h4>
-                                 <h4><a href="${mvc.contextPath}/book/#{item.id}">#{item.bookName}</a></h4>
-                                 <hr/>
-                                 <p><span class="glyphicon glyphicon-pencil" aria-hidden="true"/> <a href="${mvc.contextPath}/author/#{item.author.id}">#{item.author.firstName} #{item.author.lastName}</a> | <span class="glyphicon glyphicon-book" aria-hidden="true"/><a href="${mvc.contextPath}/publisher/#{item.publisher.id}">#{item.publisher.name}</a></p>
-                                <p>#{item.bookName}</p>
-                                <hr/>
-                            </div>
-                          
+<h2>Books Section</h2>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Books</a></li>
+        </ol>
+
+        <div class="row">
+
+
+            <c:forEach var="item" items="#{books}">
+                <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="pull-right">&#8377; #{item.price}</h4>
+                            <h4 style="color: white"><a style="color: white" href="${mvc.contextPath}/book/#{item.id}">#{item.bookName}</a></h4>
+                        </div>
+                        <div class="panel-body">
+                            <p><span class="glyphicon glyphicon-pencil" aria-hidden="true"/> <a href="${mvc.contextPath}/author/#{item.author.id}">#{item.author.firstName} #{item.author.lastName}</a> | <span class="glyphicon glyphicon-book" aria-hidden="true"/><a href="${mvc.contextPath}/publisher/#{item.publisher.id}">#{item.publisher.name}</a></p>
+                            <p>#{item.bookName}</p>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="label label-success">In Stock</span>
                         </div>
                     </div>
-                        </div>
-                  
-                  </c:forEach>
-
                 </div>
 
-          
-        
+            </c:forEach>
+
+        </div>
+
+
+
     </ui:define>
 </ui:composition>
