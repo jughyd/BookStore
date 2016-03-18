@@ -45,7 +45,7 @@ public class HomeController {
     @GET
     @Path("faq")
     public Response faq() {
-        return Response.status(Response.Status.OK).entity("/faq.xhtml").build();
+        return Response.status(Response.Status.OK).entity("faq.xhtml").build();
     }
 
     @GET
