@@ -21,6 +21,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -38,6 +40,48 @@ public class Book implements Serializable {
     
     @Column(name = "BOOK_NAME")
     private String bookName;
+    
+    @JoinColumn(name = "PUBLISHER_ID", referencedColumnName = "ID")
+    @OneToOne(optional = false)
+    private Publisher publisher;
+    
+    @JoinColumn(name = "AUTHOR_ID", referencedColumnName = "ID")
+    @OneToOne(optional = false)
+    private Author author;
+    
+    @Column
+    private Float price;
+
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+    
+    
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+    
+    
+
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+    
+      
 
     public Book() {
     }

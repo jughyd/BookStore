@@ -23,6 +23,7 @@ import javax.mvc.engine.ViewEngine;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.ApplicationPath;
 import mvc.bookstore.controller.AdminController;
+import mvc.bookstore.controller.BookController;
 import mvc.bookstore.controller.HomeController;
 
 /**
@@ -38,6 +39,7 @@ public class RestApplication extends Application {
         final Set<Class<?>> set = new HashSet<>();
         set.add(HomeController.class);
         set.add(AdminController.class);
+        set.add(BookController.class);
         return set; 
     }
 
