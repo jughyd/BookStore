@@ -30,6 +30,8 @@ public class BookVO {
     private AuthorVO author;
     
     private Float price;
+    
+    private int stock;
 
     public BookVO() {
     }
@@ -39,6 +41,16 @@ public class BookVO {
         this.bookName = bookName;
         this.price=price;
     }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    
+    
 
     public Float getPrice() {
         return price;

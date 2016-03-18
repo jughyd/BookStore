@@ -38,6 +38,7 @@ public class BookFacade extends AbstractFacade<Book, BookVO> {
         vo.setId(entity.getId());
         vo.setBookName(entity.getBookName());
         vo.setPrice(entity.getPrice());
+        vo.setStock(entity.getStock());
         
         Publisher pub = entity.getPublisher();
         PublisherVO pubVo = new PublisherVO();
@@ -57,6 +58,7 @@ public class BookFacade extends AbstractFacade<Book, BookVO> {
         return vo;
     }
     
+    //TODO: Map other entities of the Books like toVO method.
     @Override
     protected Book toEntity(BookVO vo) {
         Book entity = new Book();

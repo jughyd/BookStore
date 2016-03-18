@@ -50,7 +50,21 @@ public class Book implements Serializable {
     private Author author;
     
     @Column
+    private int stock;
+    
+    @Column
     private Float price;
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+    
+    
+    
 
     public Float getPrice() {
         return price;
