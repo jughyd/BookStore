@@ -17,24 +17,36 @@ package mvc.bookstore.facade;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import mvc.bookstore.controller.vo.AuthorVO;
 import mvc.bookstore.entities.Author;
 
 /**
  *
  * @author rhegde
  */
-public class AuthorFacade extends AbstractFacade<Author> {
+public class AuthorFacade extends AbstractFacade<Author, AuthorVO> {
 
-    @PersistenceContext
-    protected EntityManager entityManager;
 
     public AuthorFacade() {
         super(Author.class);
     }
 
     @Override
-    protected EntityManager getEntityManager() {
-        return entityManager;
+    protected AuthorVO toVO(Author entity) {
+        AuthorVO vo = new AuthorVO();
+        vo.setId(entity.getId());
+        vo.setFirstName(entity.getFirstName());
+        vo.setLastName(entity.getLastName());
+        return vo;
+    } 
+
+    @Override
+    protected Author toEntity(AuthorVO vo) {
+        Author entity = new Author();
+        entity.setId(vo.getId());
+        entity.setFirstName(vo.getFirstName());
+        entity.setLastName(vo.getLastName());
+        return entity;
     }
 
 }
