@@ -17,21 +17,36 @@ package mvc.bookstore.facade;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
  * @author rhegde
+ * @param <T>
+ * @param <V>
  */
-public abstract class AbstractFacade<T> {
-    
+public abstract class AbstractFacade<T, V> {
+
     private final Class<T> entityClass;
+    
+        @PersistenceContext
+    private EntityManager entityManager;
+    
+    protected EntityManager getEntityManager() {
+        return entityManager;
+    }
 
     public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
-    protected abstract EntityManager getEntityManager();
-    
+    protected abstract V toVO(T entity);
+
+    protected abstract T toEntity(V vo);
+
     public void create(T entity) {
         getEntityManager().persist(entity);
     }
@@ -47,19 +62,19 @@ public abstract class AbstractFacade<T> {
     public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
-
+ 
     public List<T> retrieveAll() {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
 
-     public int count() {
-        javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-        javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
+    public int count() {
+        CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        Root<T> rt = cq.from(entityClass);
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
-        javax.persistence.Query q = getEntityManager().createQuery(cq);
+        Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }
