@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 Rajmahendra Hegde.
+ * Copyright 2015 rhegde.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,43 +15,30 @@
  */
 package mvc.bookstore.controller;
 
-import javax.mvc.Viewable;
-import javax.mvc.annotation.Controller;
-import javax.mvc.annotation.View;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.Response;
+import javax.mvc.annotation.Controller;
+import javax.mvc.annotation.View;
 
 /**
- * 
+ * REST Web Service
  *
  * @author Rajmahendra Hegde <rajmahendra@gmail.com>
  */
 @Controller
-@Path("home")
 public class HomeController {
 
     @GET
+    @Path("home")
     public String home() {
+        System.out.println("home/get is called");
         return "index.xhtml";
     }
 
     @GET
-    @Path("aboutus")
-    @View("aboutus.xhtml")
-    public void aboutus() {
+    @Path("admin")
+    public String admin() {
+        System.out.println("home/admin is called");
+        return "admin/index.xhtml";
     }
-
-    @GET
-    @Path("faq")
-    public Response faq() {
-        return Response.status(Response.Status.OK).entity("faq.xhtml").build();
-    }
-
-    @GET
-    @Path("contactus")
-    public Viewable contactus() {
-        return new Viewable("contactus.xhtml");
-    }
-
 }

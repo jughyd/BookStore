@@ -19,6 +19,48 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>login.xhtml</welcome-file>
     </welcome-file-list>
+    <security-constraint>
+        <display-name>AdminContraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>AdminArea</web-resource-name>
+            <description>Resources which only admin can access</description>
+            <url-pattern>/mvcbookstore/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>AdminRole</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>UserConstraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>GeneralArea</web-resource-name>
+            <description>General User Area</description>
+            <url-pattern>/mvcbookstore/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>UserRole</role-name>
+            <role-name>AdminRole</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.html</form-login-page>
+            <form-error-page>/error.html</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description>User with admin user
+        </description>
+        <role-name>AdminRole</role-name>
+    </security-role>
+    <security-role>
+        <description>Indicates a general User
+        </description>
+        <role-name>UserRole</role-name>
+    </security-role>
 </web-app>
