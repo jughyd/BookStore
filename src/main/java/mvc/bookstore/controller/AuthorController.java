@@ -23,6 +23,7 @@ import javax.mvc.annotation.View;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import mvc.bookstore.controller.vo.AuthorVO;
+import mvc.bookstore.entities.Author;
 import mvc.bookstore.facade.AuthorFacade;
 
 /**
@@ -42,7 +43,7 @@ public class AuthorController {
     @GET
     @View("author/index.xhtml")
     public void index() {
-        List<AuthorVO> rows = aFacade.retrieveAll();
+        List<Author> rows = aFacade.retrieveAll();
         model.put("author", rows);
     }
 
