@@ -1,5 +1,5 @@
 /*
- * Copyright 2015 rhegde.
+ * Copyright 2016 Rajmahendra Hegde <rajmahendra@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,30 +15,29 @@
  */
 package mvc.bookstore.controller;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
+import javax.inject.Inject;
 import javax.mvc.annotation.Controller;
 import javax.mvc.annotation.View;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import mvc.bookstore.facade.AuthorFacade;
 
 /**
- * REST Web Service
  *
  * @author Rajmahendra Hegde <rajmahendra@gmail.com>
  */
 @Controller
-public class HomeController {
+@Path("admin")
+public class AdminController {
+    
+    @Inject
+    AuthorFacade aFacade;
 
     @GET
-    @Path("home")
-    public String home() {
-        System.out.println("home/get is called");
-        return "index.xhtml";
-    }
-
-    @GET
-    @Path("admin")
-    public String admin() {
-        System.out.println("home/admin is called");
-        return "admin/index.xhtml";
+    @View("admin/index.xhtml")
+    public void admin() {
+        
+        System.out.println("home/admin is called - " + aFacade.count());
+     //   return "admin/index.xhtml";
     }
 }
