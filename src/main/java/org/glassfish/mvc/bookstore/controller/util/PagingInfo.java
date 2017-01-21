@@ -19,7 +19,7 @@ public class PagingInfo {
     
     public int getFirstItem() {
         if (itemCount == -1) {
-            throw new IllegalStateException("itemCount must be set before invoking getFirstItem");
+            throw new IllegalStateException("itemCount must be set before invoking getFirstItem method");
         }
         if (firstItem >= itemCount) {
             if (itemCount == 0) {
