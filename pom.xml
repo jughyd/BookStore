@@ -37,14 +37,21 @@
                 <version>7.0</version>
                 <scope>provided</scope>
             </dependency>
+            <dependency>
+		        <groupId>com.sun.faces</groupId>
+		        <artifactId>jsf-api</artifactId>
+		        <version>2.2.14</version>
+		        <scope>runtime</scope>
+		    </dependency>
+		    <dependency>
+		        <groupId>com.sun.faces</groupId>
+		        <artifactId>jsf-impl</artifactId>
+		        <version>2.2.14</version>
+		        <scope>runtime</scope>
+		    </dependency> 
         </dependencies>
     </dependencyManagement>
     <dependencies>
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>eclipselink</artifactId>
@@ -88,8 +95,20 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.190</version>
+            <version>1.4.193</version>
         </dependency>
+        <dependency>
+	        <groupId>com.sun.faces</groupId>
+	        <artifactId>jsf-api</artifactId>
+	        <version>2.2.14</version>
+	        <scope>runtime</scope>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.sun.faces</groupId>
+	        <artifactId>jsf-impl</artifactId>
+	        <version>2.2.14</version>
+	        <scope>runtime</scope>
+	    </dependency> 
     </dependencies>
     
     <licenses>
@@ -116,55 +135,60 @@
     </repositories>
     <build>
         <finalName>mvcbookstore</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
-                    <showDeprecation>true</showDeprecation>
-                    <debug>false</debug>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+	        <plugins>
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-compiler-plugin</artifactId>
+	                <version>3.1</version>
+	                <configuration>
+	                    <source>${maven.compiler.source}</source>
+	                    <target>${maven.compiler.target}</target>
+	                    <compilerArguments>
+	                        <endorseddirs>${endorsed.dir}</endorseddirs>
+	                    </compilerArguments>
+	                    <showDeprecation>true</showDeprecation>
+	                    <debug>false</debug>
+	                </configuration>
+	            </plugin>
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-war-plugin</artifactId>
+	                <version>2.6</version>
+	                <configuration>
+	                    <failOnMissingWebXml>false</failOnMissingWebXml>
+	                </configuration>
+	            </plugin>
+	            <plugin>
+	                <groupId>org.apache.maven.plugins</groupId>
+	                <artifactId>maven-dependency-plugin</artifactId>
+	                <version>3.0.0</version>
+	                <executions>
+	                    <execution>
+	                        <phase>validate</phase>
+	                        <goals>
+	                            <goal>copy</goal>
+	                        </goals>
+	                        <configuration>
+	                            <outputDirectory>${endorsed.dir}</outputDirectory>
+	                            <silent>true</silent>
+	                            <artifactItems>
+	                                <artifactItem>
+	                                    <groupId>javax</groupId>
+	                                    <artifactId>javaee-endorsed-api</artifactId>
+	                                    <version>7.0</version>
+	                                    <type>jar</type>
+	                                </artifactItem>
+	                            </artifactItems>
+	                        </configuration>
+	                    </execution>
+	                </executions>
+	            </plugin>
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.2</version>
+                </plugin>
+	        </plugins>
     </build>
     <name>MVCBookStore</name>
 </project>
